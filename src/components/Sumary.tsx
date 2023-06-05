@@ -7,7 +7,7 @@ import VisualIcon from './icons/VisualIcon';
 
 const Sumary = () => {
     return (
-        <section className='flex w-[50%] flex-col gap-5 p-10'>
+        <section className='flex flex-col gap-5 p-10 md:w-[50%]'>
             <h1 className='mb-5 text-3xl font-semibold'>Summary</h1>
             <ItemScore
                 icon={<ReactionIcon />}
@@ -33,7 +33,7 @@ const Sumary = () => {
                 score={72}
                 color='#1125D6'
             />
-            <button className='mt-5 rounded-full bg-[#303B59] p-5 text-2xl text-white'>
+            <button className='mt-5 rounded-full bg-[#303B59] p-5 text-2xl text-white hover:bg-gradient-to-b hover:from-[#6742FF] hover:to-[#312CE9]'>
                 Continue
             </button>
         </section>

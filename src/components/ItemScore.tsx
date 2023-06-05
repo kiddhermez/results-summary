@@ -1,13 +1,11 @@
-import React, { HTMLAttributes } from 'react';
-
-interface Props extends HTMLAttributes<HTMLElement> {
+interface Props {
     icon: any;
     title: string;
     score: number;
     color: string;
 }
 
-const ItemScore = ({ icon, title, score, color, ...props }: Props) => {
+const ItemScore = ({ icon, title, score, color }: Props) => {
     const divStyle = {
         backgroundColor: color + '20',
         color: color,
@@ -15,7 +13,7 @@ const ItemScore = ({ icon, title, score, color, ...props }: Props) => {
     return (
         <div
             style={divStyle}
-            className={`flex justify-between gap-5 rounded-2xl p-5`}
+            className='flex justify-between gap-5 rounded-2xl p-5'
         >
             <section className='flex gap-2'>
                 {icon}
