@@ -1,17 +1,47 @@
+'use client';
+import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+
 interface Props {
     icon: any;
     title: string;
     score: number;
     color: string;
+    delay: number;
 }
 
-const ItemScore = ({ icon, title, score, color }: Props) => {
+const ItemScore = ({ icon, title, score, color, delay }: Props) => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        const duration = 2;
+        const step = score / (60 * duration);
+
+        const intervalId = setInterval(() => {
+            setCount((prevCount) => {
+                const newCount = prevCount + step;
+
+                // Detener el contador cuando se alcance el número objetivo
+                if (newCount >= score) {
+                    clearInterval(intervalId);
+                    return score;
+                }
+
+                return newCount;
+            });
+        }, 1000 / 60);
+    }, [score]);
+
     const divStyle = {
-        backgroundColor: color + '20',
+        background: `linear-gradient(to right, ${color}20 ${count}%, #00000000 ${count}%)`,
         color: color,
+        border: `solid ${color} .5px`,
     };
     return (
-        <div
+        <motion.div
+            initial={{ x: 300 }}
+            animate={{ x: 0 }}
+            transition={{ delay: delay }}
             style={divStyle}
             className='flex justify-between gap-5 rounded-2xl p-5'
         >
@@ -20,10 +50,10 @@ const ItemScore = ({ icon, title, score, color }: Props) => {
                 <h3>{title}</h3>
             </section>
             <section className='flex gap-2'>
-                <p className='text-black'>{score}</p>
+                <p className='text-black'>{Math.floor(count)}</p>
                 <p className='text-black opacity-50'>/ 100</p>
             </section>
-        </div>
+        </motion.div>
     );
 };
 

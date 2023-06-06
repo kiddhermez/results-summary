@@ -1,15 +1,13 @@
-import Result from '@/components/Result';
-import Sumary from '@/components/Sumary';
-import json from '@/api/data.json';
+import Container from '@/components/Container';
+import { randomInt } from 'crypto';
 
 export default function Home() {
-    console.log(typeof json);
+    const data = Array.from({ length: 4 }, () => randomInt(101));
+    let result = 0;
+    data.map((num) => (result += num));
     return (
-        <main className='flex h-screen w-screen items-center justify-center bg-white'>
-            <article className='flex flex-col rounded-[30px] shadow-[0_20px_25px_-5px_#6240fc40] md:flex-row'>
-                <Result />
-                <Sumary />
-            </article>
+        <main className='grid h-screen  place-content-center bg-white'>
+            <Container data={data} result={Math.floor(result / 4)} />
         </main>
     );
 }
