@@ -47,7 +47,12 @@ const Sumary = ({ data, useCounter }: Props) => {
                     useCounter={useCounter}
                 />
             </div>
-            <button className='mt-5 rounded-full bg-[#303B59] p-5 text-2xl text-white hover:bg-gradient-to-b hover:from-[#6742FF] hover:to-[#312CE9]'>
+            <button
+                onClick={() => {
+                    location.reload();
+                }}
+                className='mt-5 rounded-full bg-[#303B59] p-5 text-2xl text-white hover:bg-gradient-to-b hover:from-[#6742FF] hover:to-[#312CE9]'
+            >
                 Continue
             </button>
         </section>
