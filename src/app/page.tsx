@@ -6,7 +6,7 @@ export default function Home() {
     let result = 0;
     data.map((num) => (result += num));
     return (
-        <main className='grid h-screen  place-content-center bg-white'>
+        <main className='grid h-screen bg-white md:place-content-center'>
             <Container data={data} result={Math.floor(result / 4)} />
         </main>
     );

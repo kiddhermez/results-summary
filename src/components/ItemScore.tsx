@@ -8,29 +8,11 @@ interface Props {
     score: number;
     color: string;
     delay: number;
+    useCounter: (final: number) => number;
 }
 
-const ItemScore = ({ icon, title, score, color, delay }: Props) => {
-    const [count, setCount] = useState(0);
-
-    useEffect(() => {
-        const duration = 2;
-        const step = score / (60 * duration);
-
-        const intervalId = setInterval(() => {
-            setCount((prevCount) => {
-                const newCount = prevCount + step;
-
-                // Detener el contador cuando se alcance el número objetivo
-                if (newCount >= score) {
-                    clearInterval(intervalId);
-                    return score;
-                }
-
-                return newCount;
-            });
-        }, 1000 / 60);
-    }, [score]);
+const ItemScore = ({ icon, title, score, color, delay, useCounter }: Props) => {
+    const count = useCounter(score);
 
     const divStyle = {
         background: `linear-gradient(to right, ${color}20 ${count}%, #00000000 ${count}%)`,
