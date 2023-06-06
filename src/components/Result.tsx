@@ -1,5 +1,4 @@
-'use client';
-import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 interface Props {
     score: number;
@@ -14,14 +13,23 @@ const Result = ({ score, useCounter }: Props) => {
                 Your Result
             </h2>
             <div className='flex h-36 w-36 flex-col items-center justify-center rounded-full bg-gradient-to-b from-[#4A24CF] md:h-56 md:w-56'>
-                <p className='text-5xl font-bold md:text-7xl'>
-                    {Math.floor(count)}
-                </p>
+                <motion.p
+                    animate={{ scale: [1, 1.25, 1] }}
+                    transition={{ delay: 2, duration: 0.5 }}
+                    className='text-5xl font-bold md:text-7xl'
+                >
+                    {count}
+                </motion.p>
                 <p className='text-lg opacity-70 md:text-xl'>of 100</p>
             </div>
-            <h3 className='text-4xl font-semibold'>
+            <motion.h3
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 3 }}
+                className='text-4xl font-semibold'
+            >
                 {score <= 30 ? 'Oh No' : score >= 70 ? 'Excelent' : 'Great'}
-            </h3>
+            </motion.h3>
             <p className='text-lg'>
                 You scored higher than {score <= 10 ? 3 : score - 5}% of the
                 people who haven taken these tests.

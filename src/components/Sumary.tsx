@@ -4,6 +4,7 @@ import MemoryIcon from './icons/MemoryIcon';
 import ReactionIcon from './icons/ReactionIcon';
 import VerbalIcon from './icons/VerbalIcon';
 import VisualIcon from './icons/VisualIcon';
+import { motion } from 'framer-motion';
 interface Props {
     data: number[];
     useCounter: (final: number) => number;
@@ -47,14 +48,18 @@ const Sumary = ({ data, useCounter }: Props) => {
                     useCounter={useCounter}
                 />
             </div>
-            <button
+            <motion.button
+                whileTap={{ scale: [1.1, 0.95] }}
+                whileHover={{
+                    scale: 1.05,
+                }}
                 onClick={() => {
                     location.reload();
                 }}
                 className='mt-5 rounded-full bg-[#303B59] p-5 text-2xl text-white hover:bg-gradient-to-b hover:from-[#6742FF] hover:to-[#312CE9]'
             >
                 Continue
-            </button>
+            </motion.button>
         </section>
     );
 };

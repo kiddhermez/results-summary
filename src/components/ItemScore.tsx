@@ -21,7 +21,7 @@ const ItemScore = ({ icon, title, score, color, delay, useCounter }: Props) => {
     };
     return (
         <motion.div
-            initial={{ x: 300 }}
+            initial={{ x: 400 }}
             animate={{ x: 0 }}
             transition={{ delay: delay }}
             style={divStyle}
@@ -32,7 +32,7 @@ const ItemScore = ({ icon, title, score, color, delay, useCounter }: Props) => {
                 <h3>{title}</h3>
             </section>
             <section className='flex gap-2'>
-                <p className='text-black'>{Math.floor(count)}</p>
+                <p className='text-black'>{count}</p>
                 <p className='text-black opacity-50'>/ 100</p>
             </section>
         </motion.div>
